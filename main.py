@@ -113,7 +113,29 @@ class Hole (pygame.sprite.Sprite):
         return self.__isInGroup
 
     def collide(self, ball):
-        pass
+        w = 381 - 298
+        h = 540 - 456
+
+        x = shit.x
+        y = shit.y
+
+        holeW = 773 - 643
+        holwH = 133
+
+
+        x1, y1 = x, y
+        x2, y2 = x + w, y
+        x3, y3 = x, y+h
+        x4, y4 = x+w, y+h
+
+        if (x1>= self.hx and x1 <= self.hx+holeW and y1>= self.hy and y1 <= self.hy+holwH) or \
+          (x2>= self.hx and x2 <= self.hx+holeW and y2>= self.hy and y2 <= self.hy+holwH) or \
+          (x3>= self.hx and x3 <= self.hx+holeW and y3>= self.hy and y3 <= self.hy+holwH) or \
+          (x4>= self.hx and x4 <= self.hx+holeW and y4>= self.hy and y4 <= self.hy+holwH):
+            return True
+        
+        return False
+
 
 
     
@@ -188,19 +210,14 @@ def main():
 
         
         for h in hole_XS:
-          pass
-
-          
-          
-
-        
-          
-        
-        
+          iscollide = h.collide(ss)
+          if iscollide:
+            gameover = True
+   
 
       if gameover:
         main()
-    
+      
     pygame.display.update()
 
 
